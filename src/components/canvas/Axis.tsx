@@ -20,14 +20,14 @@ const Axis: Component = () => {
 		const materialX = new LineBasicMaterial( { color: 0xFF0000 });
 		const materialZ = new LineBasicMaterial( { color: 0x0000FF });
 
-		pointsY.push( new Vector3( 0, -100, 0 ) );
-		pointsY.push( new Vector3( 0, 100, 0 ) );
+		pointsY.push( new Vector3( 0, -25, 0 ) );
+		pointsY.push( new Vector3( 0, 25, 0 ) );
 
-		pointsX.push( new Vector3( -1000, 0, 0 ) );
-		pointsX.push( new Vector3( 1000, 0, 0 ) );
+		pointsX.push( new Vector3( -75, 0, 0 ) );
+		pointsX.push( new Vector3( 75, 0, 0 ) );
 
-		pointsZ.push( new Vector3( 0, 0, -1000 ) );
-		pointsZ.push( new Vector3( 0, 0, 1000 ) );
+		pointsZ.push( new Vector3( 0, 0, -75 ) );
+		pointsZ.push( new Vector3( 0, 0, 75 ) );
 	
 		const geometryY  = new BufferGeometry().setFromPoints( pointsY );
 		const geometryX  = new BufferGeometry().setFromPoints( pointsX );
