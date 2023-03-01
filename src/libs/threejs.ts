@@ -21,7 +21,7 @@ const createThree: ThreeLifeCycle = () => {
         scene.background = new Color(0x777777);
         createCubemap(scene);
         
-        renderer = new WebGLRenderer({ powerPreference: 'low-power', canvas: canvas });
+        renderer = new WebGLRenderer({ canvas: canvas });
         renderer.setSize( window.innerWidth, window.innerHeight );
         
         render = new RenderPass( scene, camera );
