@@ -1,0 +1,39 @@
+@keyframes hover {
+    from {
+        color: white;
+        height: 1.5rem;
+    }
+    to {
+        color: grey;
+        height: 1.45rem;
+    }
+}
+
+.container {
+    padding: .5rem 2rem;
+    box-sizing: border-box;
+
+    display: flex;
+    gap: 1rem;
+
+    right: 50%;
+    transform: translateX(50%);
+
+    border: .2rem solid white;
+    border-top: 0;
+    border-radius: 0 0 .3rem .3rem;
+
+    background-color: rgba($color: black, $alpha: .75);
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            animation: hover .1s forwards;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+@use "../auxil/utils";
+@use "../auxil/vars";
+
+@keyframes hover {
+    from {
+        padding-bottom: 1rem;
+        color: white;
+    }
+    to {
+        padding-bottom: 1.5rem;
+        color: lightgrey;
+    }
+}
+
+@keyframes close {
+    from {
+        padding-top: 0;
+        margin-bottom: 0;
+        color: white;
+    }
+    to {
+        padding-top: .2rem;
+        margin-bottom: -.2rem;
+        color: lightgrey;
+    }
+}
+
+.container {
+    > * {
+        position: absolute;
+        bottom: 0;
+    }
+
+    font-size: 1.25rem;
+
+    @include utils.font-main;
+}
+
+.container > svg {
+    width: 2rem;
+    height: 2rem;
+
+    padding-bottom: 1rem;
+
+    &:first-child {
+        left: 1rem;
+    }
+
+    &:last-child {
+        right: 1rem;
+    }
+}
+
+.hoverable:hover {
+    cursor: pointer;
+    animation: hover .1s forwards;
+}
+
+.container > div {
+    max-width: 500px;
+    width: 60%;
+
+    padding: 1rem;
+    box-sizing: border-box;
+
+    right: 50%;
+    transform: translateX(50%);
+
+    border: .2rem solid white;
+    border-bottom: 0;
+    border-radius: .3rem .3rem 0 0;
+
+    background-color: rgba($color: black, $alpha: .75);
+
+    > svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    > svg.unfocus {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    > .head {
+        display: flex;
+        justify-content: space-between;
+        @include utils.font-title;
+    }
+
+    &:not(.focused) > .body {
+        display: none;
+    }
+}
+
+.focused {
+    height: fit-content;
+
+    > .head:hover {
+        cursor: pointer;
+        animation: close .1s forwards;
+    }
+
+    & > .body {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        padding: 1rem 0;
+
+        @media screen and (max-width: vars.$screen-medium) {
+            font-size: 1rem;
+        }
+
+        @include utils.font-main;
+    }
+}
+
+svg.unfocus {
+    position: absolute;
+    top: -3rem;
+    right: 50%;
+    transform: translateX(50%);
+}

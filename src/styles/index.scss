@@ -1,0 +1,167 @@
+@use "./auxil/utils";
+@use "./auxil/vars";
+// Globals
+
+html, body, div#root {
+	width: 100%;
+	height: 100%;
+
+	padding: 0;
+	margin: 0;
+
+	overflow: hidden; // Really don't like this
+}
+
+a {
+	text-decoration: none;
+	color: white;
+
+	&:hover {
+		color: lightgrey;
+	}
+}
+
+// Panels
+
+@keyframes show-text {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+aside.panel {
+	width: 100%;
+	height: 100%;
+	max-width: 450px;
+	max-height: 500px;
+
+	display: flex;
+	flex-direction: column;
+	gap: .25rem;
+
+	right: 50%;
+	bottom: 50%;
+	position: absolute;
+    transform: translate(50%, 50%);
+
+	@include utils.font-main;
+
+	> div.content {
+		width: 100%;
+		height: 100%;
+
+		padding: 1rem;
+		box-sizing: border-box;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: .25rem;
+
+		border-radius: .3rem;
+		border: .15rem solid white;
+	
+		font-size: 1.5rem;
+		background-color: rgba($color: black, $alpha: .75);
+
+		@include utils.font-main;
+
+		@media screen and (max-width: vars.$screen-medium) {
+            font-size: 1.25rem;
+        }
+
+		&.search {
+			justify-content: flex-start;
+			overflow-y: scroll;
+			padding-left: 2rem;
+
+			&::-webkit-scrollbar {
+				width: 1rem;	
+			}
+
+			&::-webkit-scrollbar-track {
+				background: grey;	
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: white;	
+			}
+		}
+
+		> p {
+			margin: .5rem 0;
+		}
+	}
+}
+
+aside.panel > div.head {
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+
+	> button.close { 
+		display: grid;
+		place-content: center;
+	}
+
+	> button.close, > div.tab {
+		padding: .2rem;
+
+		border-radius: .3rem;
+		border: .15rem solid white;
+
+		color: white;
+		background-color: rgba($color: black, $alpha: .75);
+
+		cursor: pointer;
+
+		@include utils.font-title;
+
+		&:hover {
+			color: grey;
+		}
+
+		svg {
+			width: 1.75rem;
+			height: 1.75rem;
+		}
+	}
+}
+
+aside.panel > div.head > div.tab {
+	width: auto;
+
+	display: flex;
+	flex-grow: inherit;
+	align-items: center;
+	gap: .2rem;
+
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	
+	> span {
+		height: 1.75rem;
+
+		display: none;
+		position: relative;
+		bottom: -.1rem;
+		
+		color: white;
+	}
+
+	&.active {
+		flex-grow: 1;
+		color: white;
+
+		> span {
+			opacity: 1;
+			display: inherit;
+			animation: show-text .2s ease-in both;
+		}
+	}
+}

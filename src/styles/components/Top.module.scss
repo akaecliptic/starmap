@@ -1,0 +1,42 @@
+@use "../auxil/utils";
+@use "../auxil/vars";
+
+.container {
+    > * {
+        position: absolute;
+        top: 0;
+    }
+
+    @include utils.font-main;
+}
+
+.container > span {
+    display: flex;
+    align-items: center;
+
+    margin-top: .5rem;
+    @media screen and (max-width: vars.$screen-medium) {
+        margin-top: 3.5rem;
+    }
+
+    font-size: 1.25rem;
+    user-select: none;
+    
+    &:first-child {
+        left: 1rem;
+    }
+    
+    &:last-child {
+        right: 1rem;
+    }
+
+    time {
+        height: 1.5rem;
+    }
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: .5rem;
+    }
+}

@@ -1,0 +1,35 @@
+@use "vars";
+//Mixins, Functions, etc.
+
+@mixin font-main {
+    color: white;
+    font-family: vars.$font;
+    font-weight: 500;
+
+    ::selection {
+        color: black;
+        background-color: white;
+    }
+}
+
+@mixin font-heading {
+    color: white;
+    font-family: vars.$font;
+    font-weight: 600;
+
+    ::selection {
+        color: black;
+        background-color: white;
+    }
+}
+
+@mixin font-title {
+    color: white;
+    font-family: vars.$font;
+    font-weight: 700;
+
+    ::selection {
+        color: black;
+        background-color: white;
+    }
+}
